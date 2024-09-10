@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from "yup"
 import axios from 'axios'
+import Loader from '../Loader-page/Loader'
 
 const Login = () => {
     const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState(false);
     const formik = useFormik({
         initialValues: {
             Email: "",
@@ -19,30 +21,49 @@ const Login = () => {
         }),
         onSubmit: (values) => {
             // console.log(values)
-            // navigate('/login')
+            setIsLoading(true);
             axios.post("http://localhost:4500/usercallerfetch/login", { Email: values.Email, Password: values.Password })
                 .then((response) => {
-                    console.log(response);
-                    alert(response.data.message)
-
+                    // console.log(response);
+                   
+                    Swal.fire({
+                        title: "",
+                        text: response.data.message,
+                        icon: "warning"
+                    });
                     if (response.data.status === true) {
-                        alert(response.data.message)
+                        
+                        Swal.fire({
+                            title: "",
+                            text: response.data.message,
+                            icon: "success"
+                        });
                         navigate("/db")
-                        // Swal.fire({
-                        //     icon: "success",
-                        //     title: "Success",
-                        //     text: response.data.message,
-                        // });
                     }
                 })
                 .catch(error => {
-                    alert("There was an error occured");
-                    console.error('There was an error occured', error);
-                    // Swal.fire({
-                    //     icon: "error",
-                    //     title: "Error",
-                    //     text: "There was an error occured",
-                    // });
+                    if (!error.response) {
+                        Swal.fire({
+                            title: "Network Error",
+                            text: "Please check your network connection or try again later.",
+                            icon: "error"
+                        });
+                    } else if (error.response.status === 500) {
+                        Swal.fire({
+                            title: "Server Error",
+                            text: "Internal Server Error. Please try again later.",
+                            icon: "error"
+                        });
+                    } else {
+                        Swal.fire({
+                            // : ${error.response.data.message || error.message}
+                            title: "Error",
+                            text: `There was an error occurred`,
+                            icon: "error"
+                        });
+                    }
+                }).finally(() => {
+                    setIsLoading(false);    
                 });
 
         }
@@ -53,7 +74,7 @@ const Login = () => {
     }
     return (
         <>
-
+        {isLoading && <Loader/>}
             <div className='parentcontainer'>
                 <div className="containersignup">
                     <div className="row" style={{ width: "100%" }}>

@@ -71,7 +71,7 @@ const Signup = () => {
                         });
                     }
                 }).finally(() => {
-                    setIsLoading(false); 
+                    setIsLoading(false);    
                 });
 
         }
