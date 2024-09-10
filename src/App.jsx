@@ -5,7 +5,8 @@ import Notfound from './components/Notfound-page/Notfound'
 import Signup from './components/Signup-page/Signup'
 import Login from './components/Login-page/Login'
 import Dashboard from './components/Dashboard-page/Dashboard'
-import Loader from './components/Loader-page/Loader'
+import Navbar from './components/Navbar-page/Navbar'
+
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/db' element={<Dashboard/>}/>
-        <Route path='/load' element={<Loader/>}/>
+        <Route path='/navbar' element={<Navbar/>}/>
         <Route path='*' element={<Notfound/>}/>
       </Routes>
     </>

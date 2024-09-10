@@ -13,7 +13,7 @@
     text-align: center;
     justify-content: center;
 }
-svg {
+.svgloader {
     width: 7em;
     transform-origin: center;
     animation: rotate4 2s linear infinite;
