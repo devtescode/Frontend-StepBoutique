@@ -1,0 +1,56 @@
+/* From Uiverse.io by barisdogansutcu */ 
+.loader_container{
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    background-color: rgba(0, 0, 0, 0.733);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+svg {
+    width: 7em;
+    transform-origin: center;
+    animation: rotate4 2s linear infinite;
+    /* border: 2px solid; */
+    
+   }
+   
+   circle {
+    fill: none;
+    stroke: hsl(214, 97%, 59%);
+    stroke-width: 2;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: dash4 1.0s ease-in-out infinite;
+   }
+   
+   @keyframes rotate4 {
+    100% {
+     transform: rotate(360deg);
+     /* width: 20%; */
+    }
+   }
+   
+   @keyframes dash4 {
+    0% {
+     stroke-dasharray: 1, 200;
+     stroke-dashoffset: 0;
+    }
+   
+    50% {
+     stroke-dasharray: 90, 200;
+     stroke-dashoffset: -35px;
+    }
+   
+    100% {
+     stroke-dashoffset: -125px;
+    }
+   }
+   
