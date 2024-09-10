@@ -1,0 +1,15 @@
+.btn-custom {
+    color: #ffffff; /* Text color */
+    background-color: rgb(6, 51, 95); /* Background color */
+    border-color: #23527c; /* Border color */
+}
+
+.btn-custom:hover {
+    color: #ffffff; /* Text color on hover */
+    background-color: #1d4b6c; /* Darker shade for hover effect */
+    border-color: #1d4b6c; /* Border color on hover */
+}
+
+.btn-custom:focus, .btn-custom:active {
+    box-shadow: 0 0 0 0.2rem rgba(0, 47, 255, 0.5); /* Focus shadow */
+}
