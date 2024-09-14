@@ -6,7 +6,6 @@ const Dashboard = () => {
     return (
         <>
             <Navbar />
-
             <nav class="navbar navbar-expand-lg ">
                 <div class="container-fluid">
                     <a class="navbar-brand text-white" href="#">Navbar</a>
@@ -48,7 +47,7 @@ const Dashboard = () => {
                                 <li class="nav-item">
                                     <a class="nav-link disabled text-white" aria-disabled="true">Disabled</a>
                                 </li>
-                              
+
                             </ul>
                         </div>
                         <div class="d-flex" role="search">
@@ -59,6 +58,21 @@ const Dashboard = () => {
                     </div>
                 </div>
             </nav>
+
+
+            <div class="text-center mx-auto mt-4" style={{width:"95%"}}>
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 db_col_all">
+                        One of three columns
+                    </div>
+                    <div class="col-md-4 col-sm-12 db_col_all">
+                        One of three columns
+                    </div>
+                    <div class="col-md-4 col-sm-12 db_col_all">
+                        One of three columns
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

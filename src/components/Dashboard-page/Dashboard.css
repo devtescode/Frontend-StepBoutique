@@ -13,3 +13,8 @@
 .btn-custom:focus, .btn-custom:active {
     box-shadow: 0 0 0 0.2rem rgba(0, 47, 255, 0.5); /* Focus shadow */
 }
+
+.db_col_all{
+    border: 2px solid;
+    height: 250px;
+}
