@@ -59,16 +59,20 @@ const Dashboard = () => {
                 </div>
             </nav>
 
-
-            <div class="text-center mx-auto mt-4" style={{width:"95%"}}>
-                <div class="row">
-                    <div class="col-md-4 col-sm-12 db_col_all">
+            <div class="text-center mx-auto mt-4" style={{ width: "95%" }}>
+                <div className='text-start text-white'>
+                    <h2>
+                        Name: 
+                    </h2>
+                </div>
+                <div class=" gap-2 d-lg-flex d-md-flex d-sm-block mt-3">
+                    <div class="border bg-white db_col_all">
                         One of three columns
                     </div>
-                    <div class="col-md-4 col-sm-12 db_col_all">
+                    <div class="border mt-sm-0 bg-white mt-3 db_col_all">
                         One of three columns
                     </div>
-                    <div class="col-md-4 col-sm-12 db_col_all">
+                    <div class="border mt-sm-0 bg-white mt-3  db_col_all">
                         One of three columns
                     </div>
                 </div>

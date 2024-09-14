@@ -15,6 +15,14 @@
 }
 
 .db_col_all{
-    border: 2px solid;
+    /* border: 2px solid; */
     height: 250px;
+    width: 33%;
+}
+
+
+@media (max-width:688px) {
+    .db_col_all{
+        width: 100%;
+    }
 }
