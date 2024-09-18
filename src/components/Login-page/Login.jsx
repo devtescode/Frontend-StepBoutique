@@ -38,7 +38,12 @@ const Login = () => {
                             text: response.data.message,
                             icon: "success"
                         });
+                        
+                        localStorage.setItem("userDatas", JSON.stringify(response.data.userDatas));
+                        localStorage.token = response.data.token
+                        localStorage.setItem("token", response.data.token);
                         navigate("/db")
+                        localStorage.setItem("userlogin", true)
                     }
                 })
                 .catch(error => {
