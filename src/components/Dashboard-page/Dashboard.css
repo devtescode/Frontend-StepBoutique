@@ -21,7 +21,12 @@
     align-items: center !important;
     display: flex;
     justify-content: center !important;
-    
+
+}
+
+.db_recent-page_code{
+    /* border: 2px solid; */
+    height: 70vh;
 }
 
 

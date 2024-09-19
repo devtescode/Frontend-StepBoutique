@@ -62,6 +62,9 @@ const Dashboard = () => {
                                 <li class="nav-item" style={{ cursor: "pointer" }}>
                                     <a class="nav-link active text-white" aria-current="page" >Home</a>
                                 </li>
+                                <li class="nav-item" style={{ cursor: "pointer" }}>
+                                    <a class="nav-link active text-white" aria-current="page" >Wallet</a>
+                                </li>
 
                                 <li class="nav-item dropdown" style={{ cursor: "pointer" }}>
                                     <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -115,7 +118,7 @@ const Dashboard = () => {
                             </div>
                             <div>
                                 <h2>
-                                    2
+                                    40
                                 </h2>
                             </div>
                         </div>
@@ -129,13 +132,13 @@ const Dashboard = () => {
                             </div>
                             <div>
                                 <h2>
-                                    ₦700
+                                    5
                                 </h2>
                             </div>
                         </div>
                     </div>
                     <div class="border mt-sm-0 bg-white mt-3  db_col_all">
-                    <div>
+                        <div>
                             <div>
                                 <h2>
                                     Amount purchase
@@ -148,6 +151,38 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div className='mt-4 db_recent-page_code'>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5 col-md-6 border border-light bg-white" style={{ height: "70vh" }}>
+                            <div>
+                                <p>
+                                    Recent Product
+                                </p>
+                            </div>
+
+                            <div className='border border-light d-flex shadow p-2' style={{ height: "100px", alignItems: "center" }}>
+                                <div>
+
+                                    <div className='border border-2 rounded-5' style={{ width: "40px", height: "40px" }}>
+
+                                    </div>
+                                    <p>
+                                        Admin
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0 border border-dark bg-white" style={{ height: "70vh" }}>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </>
