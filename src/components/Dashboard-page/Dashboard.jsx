@@ -165,8 +165,7 @@ const Dashboard = () => {
                                 </p>
                             </div>
 
-                            <div className='border border-light d-flex shadow p-2 justify-content-between' style={{ height: "100px", alignItems: "center" }}>
-
+                            <div className='border border-light d-flex shadow p-2 justify-content-between' style={{ alignItems: "center" }}>
                                 <div className=''>
                                     <div className='border border-2 rounded-5' style={{ width: "40px", height: "40px" }}>
 
@@ -175,16 +174,29 @@ const Dashboard = () => {
                                         Admin
                                     </p>
                                 </div>
-                                <div>
-                                    img
+                                <div className='text-center'>
+                                    <div className='border border-2 rounded-5' style={{ width: "40px", height: "40px" }}>
+
+                                    </div>
+                                    Shoe
                                 </div>
-                                <div>
-                                    Show
+
+                                <div className='text-center'>
+                                    <div >
+                                        {/* You can saved it */}
+
+                                        <i class="ri-bookmark-line fw-bold fs-4" style={{ cursor: "pointer" }}></i>
+                                        {/* <i class="ri-bookmark-fill"></i> */}
+
+                                    </div>
+                                    <p>
+                                        save
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0 border border-dark bg-white" style={{ height: "70vh" }}>
+                        <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0 border border-light bg-white" style={{ height: "70vh" }}>
 
                         </div>
                     </div>
