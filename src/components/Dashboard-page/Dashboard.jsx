@@ -165,15 +165,21 @@ const Dashboard = () => {
                                 </p>
                             </div>
 
-                            <div className='border border-light d-flex shadow p-2' style={{ height: "100px", alignItems: "center" }}>
-                                <div>
+                            <div className='border border-light d-flex shadow p-2 justify-content-between' style={{ height: "100px", alignItems: "center" }}>
 
+                                <div className=''>
                                     <div className='border border-2 rounded-5' style={{ width: "40px", height: "40px" }}>
 
                                     </div>
                                     <p>
                                         Admin
                                     </p>
+                                </div>
+                                <div>
+                                    img
+                                </div>
+                                <div>
+                                    Show
                                 </div>
                             </div>
                         </div>
