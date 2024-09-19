@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from "yup"
@@ -7,6 +7,14 @@ import Loader from '../Loader-page/Loader'
 
 const Login = () => {
     const navigate = useNavigate()
+
+    localStorage.removeItem("userlogin")
+    useEffect(() => {
+        if (!localStorage.token) {
+          navigate('/login');
+        }
+      }, []);
+      
     const [isLoading, setIsLoading] = useState(false);
     const formik = useFormik({
         initialValues: {

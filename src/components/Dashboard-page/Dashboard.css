@@ -18,6 +18,10 @@
     /* border: 2px solid; */
     height: 250px;
     width: 33%;
+    align-items: center !important;
+    display: flex;
+    justify-content: center !important;
+    
 }
 
 
