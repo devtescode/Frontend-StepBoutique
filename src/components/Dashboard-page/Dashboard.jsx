@@ -50,7 +50,7 @@ const Dashboard = () => {
     return (
         <>
             <Navbar />
-            <nav class="navbar navbar-expand-lg ">
+            <nav class="navbar navbar-expand-lg fixed-top " style={{backgroundColor:"#23527c"}}>
                 <div class="container-fluid">
                     <a class="navbar-brand text-white" href="#">Navbar</a>
                     <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,14 +99,14 @@ const Dashboard = () => {
                 </div>
             </nav>
 
-            <div class="text-center mx-auto mt-4" style={{ width: "95%" }}>
+            <div class="text-center mx-auto" style={{ width: "95%", marginTop:"80px" }}>
                 <div className='text-start text-white'>
-                    <h2>
+                    <h5>
                         Name: {user.Username}
-                    </h2>
-                    <h2>
+                    </h5>
+                    <h5>
                         Balance: 0
-                    </h2>
+                    </h5>
                 </div>
                 <div class=" gap-2 d-lg-flex d-md-flex d-sm-block mt-3">
                     <div class="border bg-white db_col_all">
