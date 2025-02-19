@@ -84,15 +84,15 @@ const Signup = () => {
         <>
         {isLoading && <Loader/>}
             <div className='parentcontainer'>
-                <div className="containersignup">
+                <div className="containersignup col-md-5">
                     <div className="row" style={{ width: "100%" }}>
-                        <div className=" p-2 border  text-white rounded-4" style={{ backgroundColor: "#23527c" }}>
+                        <div className=" p-2 border  text-white rounded-4" style={{ backgroundColor: "#ffffff" }}>
                             <div className='text-center'>
-                                <h2 className=''>Sign-Up</h2>
+                                <h2 className='text-dark'>Sign-Up</h2>
                             </div>
                             <form onSubmit={formik.handleSubmit}>
                                 <div className="form-group">
-                                    <label for="name">Username</label>
+                                    <label for="name" className='text-dark'>Username</label>
                                     <input
                                         className={`form-control p-2 ${(formik.values.Username && !formik.errors.Username) ||
                                             (formik.touched.Username && formik.values.Username && formik.errors.Username && formik.touched.Username && formik.values.Username)
@@ -108,7 +108,7 @@ const Signup = () => {
                                         type="text" placeholder="Enter your name" />
                                 </div>
                                 <div className="form-group">
-                                    <label for="email">Email</label>
+                                    <label for="email" className='text-dark'>Email</label>
                                     <input
                                         className={`form-control p-2 ${(formik.values.Email && !formik.errors.Email) ||
                                             (formik.touched.Email && formik.values.Email && formik.errors.Email && formik.touched.Email && formik.values.Email)
@@ -124,7 +124,7 @@ const Signup = () => {
                                         type="email" placeholder="Enter your email" />
                                 </div>
                                 <div className="form-group">
-                                    <label for="password">Number</label>
+                                    <label for="password" className='text-dark'>Number</label>
                                     <input
                                         className={`form-control p-2 ${(formik.values.Number && !formik.errors.Number) ||
                                             (formik.touched.Number && formik.values.Number && formik.errors.Number && formik.touched.Number && formik.values.Number)
@@ -141,7 +141,7 @@ const Signup = () => {
                                 </div>
 
                                 <div className="form-group">
-                                    <label for="confirm-password">Password</label>
+                                    <label for="confirm-password" className='text-dark'>Password</label>
                                     <input
                                         className={`form-control p-2 ${(formik.values.Password && !formik.errors.Password) ||
                                             (formik.touched.Password && formik.values.Password && formik.errors.Password && formik.touched.Password && formik.values.Password)
@@ -161,7 +161,7 @@ const Signup = () => {
                                 </div>
                             </form>
                             <div className='text-center mt-2'>
-                                <div>
+                                <div className='text-dark'>
                                     <span>
 
                                         Alreadly have an Account?

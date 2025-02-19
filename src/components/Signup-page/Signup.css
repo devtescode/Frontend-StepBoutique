@@ -13,15 +13,16 @@ body {
 }
 
 .containersignup {
-    width: 60%;
+    /* width: 60%; */
     display: flex;
     justify-content: center;
     margin: auto;
     align-items: center !important;
-    padding: 20px;
-    background-color: #fff;
+    padding: 2px;
+    background-color: #337ab7;
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 .form-group {

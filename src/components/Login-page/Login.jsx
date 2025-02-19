@@ -11,10 +11,10 @@ const Login = () => {
     localStorage.removeItem("userlogin")
     useEffect(() => {
         if (!localStorage.token) {
-          navigate('/login');
+            navigate('/login');
         }
-      }, []);
-      
+    }, []);
+
     const [isLoading, setIsLoading] = useState(false);
     const formik = useFormik({
         initialValues: {
@@ -33,26 +33,28 @@ const Login = () => {
             axios.post("http://localhost:4500/usercallerfetch/login", { Email: values.Email, Password: values.Password })
                 .then((response) => {
                     // console.log(response);
-                   
+
                     Swal.fire({
                         title: "",
                         text: response.data.message,
                         icon: "warning"
                     });
                     if (response.data.status === true) {
-                        
                         Swal.fire({
-                            title: "",
+                            title: "Success",
                             text: response.data.message,
-                            icon: "success"
+                            icon: "success",
+                            confirmButtonText: "OK",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                localStorage.setItem("userDatas", JSON.stringify(response.data.userDatas));
+                                localStorage.setItem("token", response.data.token);
+                                localStorage.setItem("userlogin", true);
+                                navigate("/db");
+                            }
                         });
-                        
-                        localStorage.setItem("userDatas", JSON.stringify(response.data.userDatas));
-                        localStorage.token = response.data.token
-                        localStorage.setItem("token", response.data.token);
-                        navigate("/db")
-                        localStorage.setItem("userlogin", true)
                     }
+
                 })
                 .catch(error => {
                     if (!error.response) {
@@ -76,7 +78,7 @@ const Login = () => {
                         });
                     }
                 }).finally(() => {
-                    setIsLoading(false);    
+                    setIsLoading(false);
                 });
 
         }
@@ -87,17 +89,17 @@ const Login = () => {
     }
     return (
         <>
-        {isLoading && <Loader/>}
+            {isLoading && <Loader />}
             <div className='parentcontainer'>
-                <div className="containersignup">
+                <div className="containersignup col-md-5">
                     <div className="row" style={{ width: "100%" }}>
-                        <div className=" p-2 border  text-white rounded-4" style={{ backgroundColor: "#23527c" }}>
+                        <div className=" p-2 border  text-white rounded-4" style={{ backgroundColor: "#ffffff" }}>
                             <div className='text-center'>
-                                <h2 className=''>Login</h2>
+                                <h2 className='text-dark' >Login</h2>
                             </div>
                             <form onSubmit={formik.handleSubmit}>
                                 <div className="form-group">
-                                    <label for="email">Email</label>
+                                    <label for="email" className='text-dark'>Email</label>
                                     <input
                                         className={`form-control p-2 ${(formik.values.Email && !formik.errors.Email) ||
                                             (formik.touched.Email && formik.values.Email && formik.errors.Email && formik.touched.Email && formik.values.Email)
@@ -114,7 +116,7 @@ const Login = () => {
                                 </div>
 
                                 <div className="form-group">
-                                    <label for="confirm-password">Password</label>
+                                    <label for="confirm-password" className='text-dark'>Password</label>
                                     <input
                                         className={`form-control p-2 ${(formik.values.Password && !formik.errors.Password) ||
                                             (formik.touched.Password && formik.values.Password && formik.errors.Password && formik.touched.Password && formik.values.Password)
@@ -133,17 +135,17 @@ const Login = () => {
                                     <button type="submit" className="btn btn-primary">Login</button>
                                 </div>
                             </form>
-                        <div className='text-center mt-2'>
-                            <div>
-                                <span>
+                            <div className='text-center mt-2'>
+                                <div className='text-dark'>
+                                    <span>
 
-                                 Don't have an account?
-                                </span>
-                                <span className='text-primary mx-1' style={{ cursor: "pointer" }} onClick={RegisterBtn}>
-                                    Register
-                                </span>
+                                        Don't have an account?
+                                    </span>
+                                    <span className='text-primary mx-1' style={{ cursor: "pointer" }} onClick={RegisterBtn}>
+                                        Register
+                                    </span>
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>
