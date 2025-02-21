@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard-page/Dashboard'
 import Navbar from './components/Navbar-page/Navbar'
 import Adminlogin from './components/Admin-folder/adminlogin'
 import Admindashboard from './components/Admin-folder/Admindashboard'
+import Adminupload from './components/Admin-folder/Adminupload'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/navbar' element={<Navbar/>}/>
         <Route path='/adminlogin' element={<Adminlogin/>}/>
         <Route path='/admindb' element={<Admindashboard/>}/>
+        <Route path='/adupload' element={<Adminupload/>}/>
         <Route path='*' element={<Notfound/>}/>
       </Routes>
     </>
