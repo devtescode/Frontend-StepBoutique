@@ -19,6 +19,12 @@ const Adminupload = () => {
 
                                 <div className="mb-3">
                                     <label htmlFor="price" className="form-label fw-bold">
+                                        Product Name
+                                    </label>
+                                    <input type="text" className="form-control" id="price" placeholder="Product Name" />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="price" className="form-label fw-bold">
                                         Price
                                     </label>
                                     <input type="text" className="form-control" id="price" placeholder="Enter price" />
