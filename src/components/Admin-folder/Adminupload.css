@@ -1,0 +1,53 @@
+.upload-area {
+    min-height: 280px;
+    border-style: dashed !important;
+    border-color: #dee2e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .upload-area:hover {
+    border-color: #0d6efd !important;
+    background-color: #f8f9fa;
+  }
+  
+  .image-icon-wrapper {
+    background-color: #f8f9fa;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  
+  small {
+    font-size: 0.8rem;
+  }
+  
+  .text-primary {
+    color: #0d6efd !important;
+  }
+  
+  .card {
+    background-color: #fff;
+  }
+  
+  .form-label {
+    margin-bottom: 0.25rem;
+  }
+  
+  .form-control {
+    margin-top: 0.25rem;
+  }
+  

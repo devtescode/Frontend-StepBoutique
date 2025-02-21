@@ -13,7 +13,7 @@ const AdminNavbar = () => {
     }
   return (
     <div>
-         <nav class="navbar navbar-expand-lg"  style={{backgroundColor:"#23527c"}}>
+         <nav class="navbar navbar-expand-lg fixed-top"  style={{backgroundColor:"#23527c"}}>
                 <div class="container-fluid">
                     <a class="navbar-brand text-white" style={{cursor:"pointer"}} onClick={HomeNavigate}>Navbar</a>
                     <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
