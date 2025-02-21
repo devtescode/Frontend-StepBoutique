@@ -13,29 +13,29 @@ const Adminupload = () => {
                     <div className="col-md-6">
                         <div className="card border-0 rounded-2 shadow-sm">
                             <div className='text-center mt-3'>
-                                <h2>Upload</h2>
+                                <h2 style={{color:"#23527c"}}>Upload</h2>
                             </div>
                             <div className="card-body p-4">
 
                                 <div className="mb-3">
-                                    <label htmlFor="price" className="form-label fw-bold">
+                                    <label htmlFor="price" style={{color:"#23527c"}} className="form-label fw-bold">
                                         Product Name
                                     </label>
-                                    <input type="text" className="form-control" id="price" placeholder="Product Name" />
+                                    <input type="text" style={{color:"#23527c"}} className="form-control" id="price" placeholder="Product Name" />
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="price" className="form-label fw-bold">
+                                    <label htmlFor="price" style={{color:"#23527c"}} className="form-label fw-bold">
                                         Price
                                     </label>
-                                    <input type="text" className="form-control" id="price" placeholder="Enter price" />
+                                    <input type="text" style={{color:"#23527c"}} className="form-control" id="price" placeholder="Enter price" />
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="description" className="form-label fw-bold">
+                                    <label htmlFor="description" style={{color:"#23527c"}} className="form-label fw-bold">
                                         Description
                                     </label>
                                     <textarea className="form-control" style={{ height: "140px" }} placeholder="Enter description"></textarea>
                                 </div>
-                                <h6 className="mb-2 my-4 fw-bold">Upload Product</h6>
+                                <h6 className="mb-2 my-4 fw-bold" style={{color:"#23527c"}}>Upload Product</h6>
 
                                 <div className="upload-area border-2 border-dashed rounded-4 p-5 text-center">
                                     <div className="image-icon-wrapper mb-3">
