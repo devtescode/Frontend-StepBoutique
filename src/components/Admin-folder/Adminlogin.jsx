@@ -44,6 +44,8 @@ const Adminlogin = () => {
             confirmButtonText: "OK", // Custom button text (optional)
           }).then((result) => {
             if (result.isConfirmed) {
+              localStorage.setItem("adminToken", response.data.adminToken); // Store admin token
+              localStorage.setItem("adminLogin", true); // Store admin login status
               navigate("/admindb"); // Navigate only after user clicks "OK"
             }
           });

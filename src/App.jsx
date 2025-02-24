@@ -9,6 +9,8 @@ import Navbar from './components/Navbar-page/Navbar'
 import Adminlogin from './components/Admin-folder/adminlogin'
 import Admindashboard from './components/Admin-folder/Admindashboard'
 import Adminupload from './components/Admin-folder/Adminupload'
+import Userproduct from './components/Product-page/Userproduct'
+import Adminprotected from './components/Admin-folder/AdminProtectedpage/Adminprotected'
 
 
 function App() {
@@ -17,15 +19,19 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Landing/>}/>
-        <Route path='/signup' element={<Signup/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/db' element={<Dashboard/>}/>
-        <Route path='/navbar' element={<Navbar/>}/>
-        <Route path='/adminlogin' element={<Adminlogin/>}/>
-        <Route path='/admindb' element={<Admindashboard/>}/>
-        <Route path='/adupload' element={<Adminupload/>}/>
-        <Route path='*' element={<Notfound/>}/>
+        <Route path='/' element={<Landing />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/db' element={<Dashboard />} />
+        <Route path='/navbar' element={<Navbar />} />
+        <Route path='/adminlogin' element={<Adminlogin />} />
+        <Route element={<Adminprotected/>}>
+          <Route path='/admindb' element={<Admindashboard />} />
+          <Route path='/adupload' element={<Adminupload />} />
+        </Route>
+
+        <Route path='/userproduct' element={<Userproduct />} />
+        <Route path='*' element={<Notfound />} />
       </Routes>
     </>
   )

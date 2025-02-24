@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 const AdminNavbar = () => {
     const navigate = useNavigate()
     const Logout =()=>{
+        localStorage.removeItem("adminToken"); 
+        localStorage.removeItem("adminLogin");
         navigate("/adminlogin")
     }
     const NavigatetoUpload=()=>{
@@ -37,7 +39,7 @@ const AdminNavbar = () => {
                                 <li class="nav-item" style={{ cursor: "pointer" }}>
                                     <a class="nav-link disabled text-white" aria-disabled="true">Settings</a>
                                 </li>
-                                <li class="nav-item" onClick={Logout} style={{ cursor: "pointer" }} >
+                                <li class="nav-item" onClick={Logout} style={{ cursor: "pointer" }}>
                                     <a class="nav-link disabled text-white" aria-disabled="true" >LogOut</a>
                                 </li>
 
