@@ -51,7 +51,7 @@ const Userproduct = () => {
                   <div className="card-body">
                     <h5 className="card-title">Product: {product.productName}</h5>
                     <p className="card-text">Description: {product.description}</p>
-                    <h6 className="text-primary fw-bold">Price: ₦{product.price}</h6>
+                    <h6 className="text-primary fw-bold"> Price: ₦{product.price.toLocaleString()}</h6>
                     <button className="btn btn-primary w-100">View Product</button>
                   </div>
                 </div>
