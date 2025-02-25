@@ -4,11 +4,14 @@ import "./Dashboard.css"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import UserNavbar from '../UserNavbar/UserNavbar'
+import Loader from '../Loader-page/Loader'
 
 const Dashboard = () => {
     let navigate = useNavigate()
     const [user, setUser] = useState("");
+    const [loading, setLoading] = useState(true);
     let url = "http://localhost:4500/usercallerfetch/db"
+
     useEffect(() => {
         let token = localStorage.token;
         axios.get(url, {
@@ -39,7 +42,9 @@ const Dashboard = () => {
 
                     console.error("Error:", err.message);
                 }
-            })
+            }).finally(() => {
+                setLoading(false);
+            });
     }, [navigate])
 
 
@@ -72,11 +77,11 @@ const Dashboard = () => {
 
         fetchRecentProducts();
     }, []);
-
     return (
         <>
             <Navbar />
             <UserNavbar />
+            {loading && <Loader />}
             <div class="text-center mx-auto" style={{ width: "95%", marginTop: "80px" }}>
                 <div className='text-start text-white'>
                     <h5>
@@ -133,7 +138,6 @@ const Dashboard = () => {
             </div>
             <div className="container mt-4">
                 <div className="row g-4">
-                    {/* Recent Products Section */}
                     <div className="col-md-6">
                         <div className="card shadow-lg border-0 p-3 bg-white rounded h-100">
                             <h5 className="fw-bold text-primary">Recent Products</h5>
@@ -144,7 +148,7 @@ const Dashboard = () => {
                                         key={index}
                                         className="d-flex align-items-center p-3 border rounded shadow-sm mb-2"
                                         style={{ cursor: "pointer" }}
-                                        onClick={() => setSelectedProduct(product)} // Set selected product on click
+                                        onClick={() => setSelectedProduct(product)}
                                     >
                                         <div
                                             className="rounded-circle overflow-hidden"
@@ -163,13 +167,6 @@ const Dashboard = () => {
                                             <p className="text-muted m-0 fw-bold">₦{product.price.toLocaleString()}</p>
                                         </div>
 
-                                        <div className="ms-auto text-center">
-                                            <i
-                                                className="ri-bookmark-line fs-4 text-warning"
-                                                style={{ cursor: "pointer" }}
-                                            ></i>
-                                            <p className="text-muted small">Save</p>
-                                        </div>
                                     </div>
                                 ))
                             ) : (
@@ -180,7 +177,6 @@ const Dashboard = () => {
                         </div>
                     </div>
 
-                    {/* Click to View Section */}
                     <div className="col-md-6">
                         <div className="card shadow-lg border-0 p-3 bg-white rounded h-100">
                             {selectedProduct ? (
@@ -194,8 +190,6 @@ const Dashboard = () => {
                                     <div className='text-center'>
 
                                         <p className="text-muted">Product Name: {selectedProduct.productName}</p>
-                                        {/* <span className="text-muted">Product Name: </span>
-                               <span className="fw-bold">{selectedProduct.productName}</span> */}
                                         <p className="text-muted">Description: {selectedProduct.description}</p>
                                         <p className="fw-bold text-muted">Price: ₦{selectedProduct.price.toLocaleString()}</p>
                                     </div>
