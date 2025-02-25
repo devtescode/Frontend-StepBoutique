@@ -42,12 +42,42 @@ const Dashboard = () => {
             })
     }, [navigate])
 
-   
+
+    const [productCount, setProductCount] = useState(0);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    useEffect(() => {
+        const fetchProductCount = async () => {
+            try {
+                const response = await fetch("http://localhost:4500/admin/availableProducts");
+                const data = await response.json();
+                setProductCount(data.count);
+            } catch (error) {
+                console.error("Error fetching product count:", error);
+            }
+        };
+
+        fetchProductCount();
+    }, []);
+
+    const [recentProducts, setRecentProducts] = useState([]);
+    useEffect(() => {
+        const fetchRecentProducts = async () => {
+            try {
+                const response = await axios.get("http://localhost:4500/admin/recentProduct"); // Adjust API endpoint
+                setRecentProducts(response.data.products);
+            } catch (error) {
+                console.error("Error fetching recent products:", error);
+            }
+        };
+
+        fetchRecentProducts();
+    }, []);
+
     return (
         <>
             <Navbar />
-            <UserNavbar/>
-            <div class="text-center mx-auto" style={{ width: "95%", marginTop:"80px" }}>
+            <UserNavbar />
+            <div class="text-center mx-auto" style={{ width: "95%", marginTop: "80px" }}>
                 <div className='text-start text-white'>
                     <h5>
                         Name: {user.Username}
@@ -60,97 +90,125 @@ const Dashboard = () => {
                     <div class="border bg-white db_col_all">
                         <div>
                             <div>
-                                <h2>
+                                <h4>
                                     Available Product
-                                </h2>
+                                </h4>
                             </div>
                             <div>
-                                <h2>
-                                    40
-                                </h2>
+                                <h4>
+                                    {productCount}
+                                </h4>
                             </div>
                         </div>
                     </div>
                     <div class="border mt-sm-0 bg-white mt-3 db_col_all">
                         <div>
                             <div>
-                                <h2>
+                                <h4>
                                     No purchase
-                                </h2>
+                                </h4>
                             </div>
                             <div>
-                                <h2>
-                                    5
-                                </h2>
+                                <h4>
+                                    0
+                                </h4>
                             </div>
                         </div>
                     </div>
                     <div class="border mt-sm-0 bg-white mt-3  db_col_all">
                         <div>
                             <div>
-                                <h2>
+                                <h4>
                                     Amount purchase
-                                </h2>
+                                </h4>
                             </div>
                             <div>
-                                <h2>
-                                    ₦700
-                                </h2>
+                                <h4>
+                                    ₦7,000
+                                </h4>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div className="container mt-4">
+                <div className="row g-4">
+                    {/* Recent Products Section */}
+                    <div className="col-md-6">
+                        <div className="card shadow-lg border-0 p-3 bg-white rounded h-100">
+                            <h5 className="fw-bold text-primary">Recent Products</h5>
 
-            <div className='mt-4 db_recent-page_code'>
+                            {recentProducts.length > 0 ? (
+                                recentProducts.map((product, index) => (
+                                    <div
+                                        key={index}
+                                        className="d-flex align-items-center p-3 border rounded shadow-sm mb-2"
+                                        style={{ cursor: "pointer" }}
+                                        onClick={() => setSelectedProduct(product)} // Set selected product on click
+                                    >
+                                        <div
+                                            className="rounded-circle overflow-hidden"
+                                            style={{ width: "50px", height: "50px" }}
+                                        >
+                                            <img
+                                                src={product.image}
+                                                alt="Product"
+                                                className="w-100 h-100 object-fit-cover"
+                                            />
+                                        </div>
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-5 col-md-6 border border-light bg-white" style={{ height: "70vh" }}>
-                            <div>
-                                <p>
-                                    Recent Product
+                                        <div className="ms-3">
+                                            <h6 className="fw-bold">{product.productName}</h6>
+                                            <p className="text-muted m-0">{product.description}</p>
+                                            <p className="text-muted m-0">₦{product.price}</p>
+                                        </div>
+
+                                        <div className="ms-auto text-center">
+                                            <i
+                                                className="ri-bookmark-line fs-4 text-warning"
+                                                style={{ cursor: "pointer" }}
+                                            ></i>
+                                            <p className="text-muted small">Save</p>
+                                        </div>
+                                    </div>
+                                ))
+                            ) : (
+                                <p className="text-muted text-center mt-3">
+                                    No recent products available
                                 </p>
-                            </div>
-
-                            <div className='border border-light d-flex shadow p-2 justify-content-between' style={{ alignItems: "center" }}>
-                                <div className=''>
-                                    <div className='border border-2 rounded-5' style={{ width: "40px", height: "40px" }}>
-
-                                    </div>
-                                    <p>
-                                        Admin
-                                    </p>
-                                </div>
-                                <div className='text-center'>
-                                    <div className='border border-2 rounded-5' style={{ width: "40px", height: "40px" }}>
-
-                                    </div>
-                                    Shoe
-                                </div>
-
-                                <div className='text-center'>
-                                    <div >
-                                        {/* You can saved it */}
-
-                                        <i class="ri-bookmark-line fw-bold fs-4" style={{ cursor: "pointer" }}></i>
-                                        {/* <i class="ri-bookmark-fill"></i> */}
-
-                                    </div>
-                                    <p>
-                                        save
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0 border border-light bg-white" style={{ height: "70vh" }}>
-
+                            )}
                         </div>
                     </div>
 
+                    {/* Click to View Section */}
+                    <div className="col-md-6">
+                        <div className="card shadow-lg border-0 p-3 bg-white rounded h-100">
+                            {selectedProduct ? (
+                                <div className="d-flex flex-column align-items-center justify-content-center  h-100">
+                                    <img
+                                        src={selectedProduct.image}
+                                        alt="Selected Product"
+                                        className="img-fluid rounded mb-3"
+                                        style={{ maxHeight: "200px" }}
+                                    />
+                                    <div className='text-center'>
+
+                                        <p>Product Name: {selectedProduct.productName}</p>
+                                        {/* <span className="text-muted">Product Name: </span>
+                               <span className="fw-bold">{selectedProduct.productName}</span> */}
+                                        <p className="text-muted">Description: {selectedProduct.description}</p>
+                                        <p className="fw-bold text-primary">Price: ₦{selectedProduct.price}</p>
+                                    </div>
+                                </div>
+
+                            ) : (
+                                <p className="text-muted text-center fs-5 fw-bold" >Click on a product to view</p>
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </>
     )
 }

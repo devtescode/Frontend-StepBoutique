@@ -13,6 +13,10 @@ const UserNavbar = () => {
     const ProductBtn=()=>{
         navigate("/userproduct")
     }
+
+    const HomeBtn=()=>{
+        navigate("/db")
+    }
   return (
     <div>
         
@@ -25,7 +29,7 @@ const UserNavbar = () => {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent" style={{ justifyContent: "space-between" }}>
                         <div className=' w-100 '>
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center text-center mx-0 mx-sm-5">
-                                <li class="nav-item" style={{ cursor: "pointer" }}>
+                                <li class="nav-item" style={{ cursor: "pointer" }} onClick={HomeBtn}>
                                     <a class="nav-link active text-white" aria-current="page" >Home</a>
                                 </li>
                                 <li class="nav-item" style={{ cursor: "pointer" }}>

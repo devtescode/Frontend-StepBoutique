@@ -44,11 +44,15 @@ const Userproduct = () => {
                     alt={product.productName}
                     style={{ height: "350px", objectFit: "cover" }}
                   />
+                  <div className="text-end">
+                    <i class="ri-heart-line fs-3" style={{color:"#23527c"}}></i>
+                    {/* <i class="ri-heart-fill"></i> */}
+                  </div>
                   <div className="card-body">
                     <h5 className="card-title">Product: {product.productName}</h5>
                     <p className="card-text">Description: {product.description}</p>
                     <h6 className="text-primary fw-bold">Price: ₦{product.price}</h6>
-                    <button className="btn btn-primary w-100">Buy Now</button>
+                    <button className="btn btn-primary w-100">View Product</button>
                   </div>
                 </div>
               </div>

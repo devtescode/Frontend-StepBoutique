@@ -2,22 +2,25 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 const AdminNavbar = () => {
     const navigate = useNavigate()
-    const Logout =()=>{
-        localStorage.removeItem("adminToken"); 
+    const Logout = () => {
+        localStorage.removeItem("adminToken");
         localStorage.removeItem("adminLogin");
         navigate("/adminlogin")
     }
-    const NavigatetoUpload=()=>{
+    const NavigatetoUpload = () => {
         navigate("/adupload")
     }
-    const HomeNavigate=()=>{
+    const HomeNavigate = () => {
         navigate("/admindb")
     }
-  return (
-    <div>
-         <nav class="navbar navbar-expand-lg fixed-top"  style={{backgroundColor:"#23527c"}}>
+    const NavigatetoViewUpload=()=>{
+        navigate("/adviewupload")
+    }
+    return (
+        <div>
+            <nav class="navbar navbar-expand-lg fixed-top" style={{ backgroundColor: "#23527c" }}>
                 <div class="container-fluid">
-                    <a class="navbar-brand text-white" style={{cursor:"pointer"}} onClick={HomeNavigate}>Navbar</a>
+                    <a class="navbar-brand text-white" style={{ cursor: "pointer" }} onClick={HomeNavigate}>Navbar</a>
                     <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -30,8 +33,18 @@ const AdminNavbar = () => {
                                 <li class="nav-item" style={{ cursor: "pointer" }}>
                                     <a class="nav-link active text-white" aria-current="page" >History</a>
                                 </li>
-                                <li class="nav-item" style={{ cursor: "pointer" }} onClick={NavigatetoUpload}>
-                                    <a class="nav-link disabled text-white" aria-disabled="true">Upload</a>
+                                <li class="nav-item dropdown" style={{ cursor: "pointer" }}>
+                                    <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Upload
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item" style={{ cursor: "pointer" }} onClick={NavigatetoUpload}>
+                                            <a class="nav-link active disabled" aria-disabled="true">Upload</a>
+                                        </li>
+                                        <li class="nav-item" style={{ cursor: "pointer" }} onClick={NavigatetoViewUpload}>
+                                            <a class="nav-link active disabled" aria-disabled="true">View Upload</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="nav-item" style={{ cursor: "pointer" }}>
                                     <a class="nav-link disabled text-white" aria-disabled="true">Profile</a>
@@ -48,8 +61,8 @@ const AdminNavbar = () => {
                     </div>
                 </div>
             </nav>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default AdminNavbar

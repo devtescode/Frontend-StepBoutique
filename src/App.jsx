@@ -11,6 +11,7 @@ import Admindashboard from './components/Admin-folder/Admindashboard'
 import Adminupload from './components/Admin-folder/Adminupload'
 import Userproduct from './components/Product-page/Userproduct'
 import Adminprotected from './components/Admin-folder/AdminProtectedpage/Adminprotected'
+import Adminviewupload from './components/Admin-folder/Adminviewuploadpage/Adminviewupload'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route element={<Adminprotected/>}>
           <Route path='/admindb' element={<Admindashboard />} />
           <Route path='/adupload' element={<Adminupload />} />
+          <Route path='/adviewupload' element={<Adminviewupload/>}/>
         </Route>
 
         <Route path='/userproduct' element={<Userproduct />} />
