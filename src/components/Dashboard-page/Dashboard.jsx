@@ -159,8 +159,8 @@ const Dashboard = () => {
 
                                         <div className="ms-3">
                                             <h6 className="fw-bold">{product.productName}</h6>
-                                            <p className="text-muted m-0">{product.description}</p>
-                                            <p className="text-muted m-0">₦{product.price}</p>
+                                            <p className="text-muted m-0 fw-bold">{product.description}</p>
+                                            <p className="text-muted m-0 fw-bold">₦{product.price.toLocaleString()}</p>
                                         </div>
 
                                         <div className="ms-auto text-center">
@@ -193,11 +193,11 @@ const Dashboard = () => {
                                     />
                                     <div className='text-center'>
 
-                                        <p>Product Name: {selectedProduct.productName}</p>
+                                        <p className="text-muted">Product Name: {selectedProduct.productName}</p>
                                         {/* <span className="text-muted">Product Name: </span>
                                <span className="fw-bold">{selectedProduct.productName}</span> */}
                                         <p className="text-muted">Description: {selectedProduct.description}</p>
-                                        <p className="fw-bold text-primary">Price: ₦{selectedProduct.price}</p>
+                                        <p className="fw-bold text-muted">Price: ₦{selectedProduct.price.toLocaleString()}</p>
                                     </div>
                                 </div>
 

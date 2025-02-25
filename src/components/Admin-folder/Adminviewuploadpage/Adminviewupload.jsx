@@ -118,7 +118,7 @@ const Adminviewupload = () => {
                     </td>
                     <td>{product.productName}</td>
                     <td>{product.description}</td>
-                    <td>₦{product.price}</td>
+                    <td>₦{product.price.toLocaleString()}</td>
                     <td>
                       <button
                         className="btn btn-warning btn-sm me-2"
