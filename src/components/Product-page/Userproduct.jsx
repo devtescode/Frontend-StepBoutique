@@ -56,19 +56,19 @@ const Userproduct = () => {
   const handleLikeToggle = async (productId) => {
     try {
       const response = await axios.post(`http://localhost:4500/usercallerfetch/like/${productId}`, {
-          userId
+        userId
       });
 
       if (response.status === 200) {
-          const updatedProduct = response.data.product;  // Updated product from backend
+        const updatedProduct = response.data.product;  // Updated product from backend
 
-          setProducts(products => products.map(product => 
-              product._id === productId ? updatedProduct : product
-          ));
+        setProducts(products => products.map(product =>
+          product._id === productId ? updatedProduct : product
+        ));
       }
-  } catch (error) {
+    } catch (error) {
       console.error("Error liking/unliking product:", error);
-  }
+    }
   };
 
 
@@ -122,6 +122,9 @@ const Userproduct = () => {
                             onClick={() => handleLikeToggle(product._id)}
                           ></i>
                         )}
+                          <p className="text-secondary" style={{ fontSize: "14px" }}>
+                          {product.likes?.length || 0} {product.likes?.length === 1 ? 'Like' : 'Likes'}
+                      </p>
 
                       </div>
                       <div className="card-body">
