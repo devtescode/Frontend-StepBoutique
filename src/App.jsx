@@ -12,6 +12,7 @@ import Adminupload from './components/Admin-folder/Adminupload'
 import Userproduct from './components/Product-page/Userproduct'
 import Adminprotected from './components/Admin-folder/AdminProtectedpage/Adminprotected'
 import Adminviewupload from './components/Admin-folder/Adminviewuploadpage/Adminviewupload'
+import Adminalluserslike from './components/Admin-folder/AdminAllUsersLiked/Adminalluserslike'
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path='/admindb' element={<Admindashboard />} />
           <Route path='/adupload' element={<Adminupload />} />
           <Route path='/adviewupload' element={<Adminviewupload/>}/>
+          <Route path='/adlikedusers' element={<Adminalluserslike/>}/>
         </Route>
 
         <Route path='/userproduct' element={<Userproduct />} />
