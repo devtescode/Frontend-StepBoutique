@@ -43,7 +43,7 @@ const Adminalluserslike = () => {
                                     <td>{user.Username}</td>
                                     <td>{user.Email}</td>
                                     <td>
-                                    <ul className="row list-unstyled g-3 overflow-hidden">
+                                        <ul className="row list-unstyled g-3 overflow-hidden">
                                             {user.likedProducts?.map((product, idx) => (
                                                 <li
                                                     key={idx}

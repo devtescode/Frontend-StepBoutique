@@ -114,12 +114,12 @@ const Admindashboard = () => {
                 </div>
             </div>
 
-            <div className="mt-2">
-                <table className="table table-bordered table-light">
-                    <thead className="text-center">
+            <div className="table-responsive mt-2">
+                <table className="table table-bordered text-center">
+                    <thead className="table-primary">
                         <tr>
                             <th>#</th>
-                            <th className="whitespace-nowrap">Full Name</th>
+                            <th>Full Name</th>
                             <th>Email</th>
                             <th>Liked Products</th>
                         </tr>
@@ -129,29 +129,30 @@ const Admindashboard = () => {
                             displayedUsers.map((user, index) => (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
-                                    <td>{user.Username}</td>
-                                    <td>{user.Email}</td>
+                                    <td className="text-nowrap">{user.Username}</td>
+                                    <td className="text-nowrap">{user.Email}</td>
                                     <td>
-                                        <ul className="row list-unstyled g-3 overflow-hidden">
-                                            {user.likedProducts?.map((product, idx) => (
-                                                <li
-                                                    key={idx}
-                                                    className=" p-2 g-2 col-12 col-sm-6 col-md-4 col-lg-4 d-flex align-items-center gap-2 flex-wrap"
-                                                >
-                                                    <img
-                                                        src={product.productImage}
-                                                        alt={product.productName}
-                                                        className="img-fluid rounded"
-                                                        style={{ width: "50px", height: "50px", objectFit: "cover" }}
-                                                    />
-                                                    {product.productName}
-                                                </li>
-                                            ))}
-                                        </ul>
+                                        <div className="container-fluid">
+                                            <ul className="row list-unstyled gap-2 mx-0">
+                                                {user.likedProducts?.map((product, idx) => (
+                                                    <li
+                                                        key={idx}
+                                                        className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column align-items-center shadow-sm justify-content-center gap-2 p-2 border rounded text-center"
+                                                    >
+                                                        <img
+                                                            src={product.productImage}
+                                                            alt={product.productName}
+                                                            className="img-fluid rounded"
+                                                            style={{ width: "90px", height: "90px", objectFit: "cover" }}
+                                                        />
+                                                        <span className="fw-semibold text-truncate" style={{ maxWidth: "90%" }}>
+                                                            {product.productName}
+                                                        </span>
+                                                    </li>
+                                                ))}
+                                            </ul>
 
-
-
-
+                                        </div>
                                     </td>
                                 </tr>
                             ))
@@ -162,6 +163,8 @@ const Admindashboard = () => {
                         )}
                     </tbody>
                 </table>
+
+
 
                 {/* "See All" Button */}
                 <div className="text-center mt-3">
