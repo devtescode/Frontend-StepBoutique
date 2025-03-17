@@ -6,6 +6,7 @@ import { Star, StarFill, Facebook, Twitter, Clock, InfoCircle } from "react-boot
 import axios from "axios"
 import { useParams } from "react-router-dom"
 import Loader from "../Loader-page/Loader"
+import Logo from  '../../assets/Logofolder/logo.png'
 
 const Demo = () => {
     const [selectedLocation, setSelectedLocation] = useState("Oyo")
@@ -228,12 +229,12 @@ const Demo = () => {
                                 <div className="mb-3">
                                     <div className="d-flex align-items-center mb-2">
                                         <img
-                                            src="/placeholder.svg?height=30&width=100"
-                                            alt="SHop"
-                                            width={100}
+                                            src={Logo}
+                                            alt="StepStyle"
+                                            width={30}
                                             height={30}
                                             className="img-fluid"
-                                        />
+                                        />StepStyle
                                     </div>
                                     <p className="small">
                                         The BEST products, delivered faster. Now PAY on DELIVERY, Cash or Bank Transfer Anywhere, Zero Wahala!{" "}
@@ -264,13 +265,7 @@ const Demo = () => {
                                 <div className="mb-3 border-bottom pb-3">
                                     <div className="d-flex">
                                         <div className="me-3">
-                                            <img
-                                                src="/placeholder.svg?height=40&width=40"
-                                                alt="Pickup"
-                                                width={40}
-                                                height={40}
-                                                className="img-fluid"
-                                            />
+                                        <i class="ri-team-line fs-4 fw-bold"></i>
                                         </div>
                                         <div>
                                             <h6>
@@ -290,13 +285,7 @@ const Demo = () => {
                                 <div className="mb-3">
                                     <div className="d-flex">
                                         <div className="me-3">
-                                            <img
-                                                src="/placeholder.svg?height=40&width=40"
-                                                alt="Return"
-                                                width={40}
-                                                height={40}
-                                                className="img-fluid"
-                                            />
+                                        <i class="ri-verified-badge-line fs-4 fw-bold"></i>
                                         </div>
                                         <div>
                                             <h6>Return Policy</h6>
