@@ -270,7 +270,7 @@ const Demo = () => {
                                         <div>
                                             <h6>
                                                 Pickup Station{" "}
-                                                <a href="#" className="small">
+                                                <a className="small">
                                                     Details
                                                 </a>
                                             </h6>
@@ -300,7 +300,7 @@ const Demo = () => {
                                 </div>
                             </Card.Body>
                         </Card>
-
+{/* 
                         <Card>
                             <Card.Header className="d-flex justify-content-between align-items-center">
                                 <span>SELLER INFORMATION</span>
@@ -309,7 +309,7 @@ const Demo = () => {
                             <Card.Body>
                                 <p>Zeemak Ltd - AC</p>
                             </Card.Body>
-                        </Card>
+                        </Card> */}
                     </Col>
                 </Row>
             </Container>
