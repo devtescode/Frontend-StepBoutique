@@ -13,6 +13,8 @@ import Userproduct from './components/Product-page/Userproduct'
 import Adminprotected from './components/Admin-folder/AdminProtectedpage/Adminprotected'
 import Adminviewupload from './components/Admin-folder/Adminviewuploadpage/Adminviewupload'
 import Adminalluserslike from './components/Admin-folder/AdminAllUsersLiked/Adminalluserslike'
+import Userproductdetails from './components/Userproductdetailspage/Userproductdetails'
+import Demo from './components/Userproductdetailspage/Demo'
 
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
         </Route>
 
         <Route path='/userproduct' element={<Userproduct />} />
+        <Route path='/userdetails/:id' element={<Userproductdetails/>}/>
+        <Route path='/demo/:id' element={<Demo/>}/>
         <Route path='*' element={<Notfound />} />
       </Routes>
     </>

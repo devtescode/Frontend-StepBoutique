@@ -3,6 +3,7 @@ import Navbar from "../Navbar-page/Navbar";
 import UserNavbar from "../UserNavbar/UserNavbar";
 import Loader from "../Loader-page/Loader";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Userproduct = () => {
   const [products, setProducts] = useState([]);
@@ -71,6 +72,8 @@ const Userproduct = () => {
     }
   };
 
+  const navigate = useNavigate()
+
 
 
   return (
@@ -133,7 +136,7 @@ const Userproduct = () => {
                         <h6 className="text-primary fw-bold">
                           Price: ₦{product.price.toLocaleString()}
                         </h6>
-                        <button className="btn btn-primary w-100">View Product</button>
+                        <button className="btn btn-primary w-100" onClick={() => navigate(`/demo/${product._id}`)}>View Product</button>
                       </div>
                     </div>
                   </div>
