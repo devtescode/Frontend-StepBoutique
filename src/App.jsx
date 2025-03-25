@@ -15,6 +15,7 @@ import Adminviewupload from './components/Admin-folder/Adminviewuploadpage/Admin
 import Adminalluserslike from './components/Admin-folder/AdminAllUsersLiked/Adminalluserslike'
 import Userproductdetails from './components/Userproductdetailspage/Userproductdetails'
 import VeiwAddtocart from './components/Admin-folder/AdminVeiwAddtocart/VeiwAddtocart'
+import UserviewAddtoCart from './components/UserviewAddtoCart/UserviewAddtoCart'
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         </Route>
         <Route path='/userproduct' element={<Userproduct />} />
         <Route path='/userdetails/:id' element={<Userproductdetails/>}/>
+        <Route path='/userviewaddtocart' element={<UserviewAddtoCart/>}/>
         <Route path='*' element={<Notfound />} />
       </Routes>
     </>

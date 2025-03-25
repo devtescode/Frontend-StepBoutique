@@ -10,21 +10,13 @@ import Logo from '../../assets/Logofolder/logo.png'
 import { State, City } from "country-state-city";
 
 const Userproductdetails = () => {
+    const { id: productId } = useParams(); // Get productId from URL
     const [selectedState, setSelectedState] = useState("");
     const [selectedCity, setSelectedCity] = useState("");
+    const [selectedStateIso, setSelectedStateIso] = useState("");
 
     const states = State.getStatesOfCountry("NG");
-    // console.log(states.length,"see state here" );
-    
 
-    // const [mainImage, setMainImage] = useState("/placeholder.svg?height=400&width=300")
-    // const thumbnails = [
-    //     "/placeholder.svg?height=80&width=60",
-    //     "/placeholder.svg?height=80&width=60",
-    //     "/placeholder.svg?height=80&width=60",
-    //     "/placeholder.svg?height=80&width=60",
-    //     "/placeholder.svg?height=80&width=60",
-    // ]
 
 
     const { id } = useParams();
@@ -45,9 +37,67 @@ const Userproductdetails = () => {
         fetchProduct();
     }, [id]);
 
-    const addToCart = () => {
-        console.log(`Added ${product.productName} to cart!`);
+
+    const addToCart = async (productId, quantity, state, city, productName, image, description) => {
+        try {
+            const storedUser = localStorage.getItem("userDatas");
+    
+            if (!state || !city) {
+                alert("Please select a state and city before adding to cart.");
+                return;
+            }
+    
+            if (!storedUser) {
+                console.error("User not found in localStorage");
+                return;
+            }
+    
+            const { userId } = JSON.parse(storedUser);
+    
+            if (!productName || !image || !description) {
+                console.error("Product details are missing:", { productName, image, description });
+                alert("Product details are incomplete. Please try again.");
+                return;
+            }
+    
+            const cartItem = { userId, productId, quantity, state, city, productName, image, description };
+            // console.log("Sending to backend:", cartItem);
+
+
+            // console.log("🛒 Sending Data to Backend:", { 
+            //     userId, 
+            //     productId, 
+            //     quantity, 
+            //     state, 
+            //     city, 
+            //     productName, 
+            //     image, 
+            //     description 
+            // });
+            
+    
+            const response = await fetch("http://localhost:4500/usercallerfetch/useraddtocart", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(cartItem),
+            });
+    
+            if (!response.ok) {
+                throw new Error("Failed to add item to cart");
+            }
+    
+            const data = await response.json();
+            console.log("Response from backend:", data);
+        } catch (error) {
+            console.error("Error adding to cart:", error);
+            alert("An error occurred while adding the item to the cart. Please try again.");
+        }
     };
+    
+
+    // const addToCart = () => {
+    //     console.log(`Added ${product.productName} to cart!`);
+    // };
 
     const initialTime = 18 * 3600 + 43 * 60 + 16; // Convert to seconds
     const [timeLeft, setTimeLeft] = useState(initialTime);
@@ -68,6 +118,9 @@ const Userproductdetails = () => {
         const secs = seconds % 60;
         return `${hours}h : ${minutes}m : ${secs}s`;
     };
+
+
+
 
 
     if (loading) {
@@ -98,13 +151,13 @@ const Userproductdetails = () => {
                                             <img
                                                 src={product.image}
                                                 alt={product.productName}
-                                                width={300}
-                                                height={400}
+                                                // width={300}
+                                                // height={400}
                                                 className="img-fluid"
                                             />
                                         </Card.Body>
                                     </Card>
-                                
+
                                     <div className="mb-3">
                                         <h6>SHARE THIS PRODUCT</h6>
                                         <div className="d-flex gap-2">
@@ -164,7 +217,7 @@ const Userproductdetails = () => {
                                 </Card>
 
                                 <div className="mb-3">
-                                    <div className="d-flex" style={{alignItems:"center"}}>
+                                    <div className="d-flex" style={{ alignItems: "center" }}>
                                         {[1].map((star) => (
                                             <i className="ri-heart-fill fs-4" key={star}></i>
                                         ))}
@@ -173,9 +226,25 @@ const Userproductdetails = () => {
                                     </div>
                                 </div>
 
-                                <Button style={{backgroundColor:"#23527c"}} size="lg" className="w-100 mb-3">
-                                    Add to cart
+                                <Button
+                                    style={{ backgroundColor: "#23527c" }}
+                                    size="lg"
+                                    className="w-100 mb-3"
+                                    onClick={() => addToCart(
+                                        product?._id,
+                                        1,
+                                        selectedState,
+                                        selectedCity,
+                                        product?.productName,  // ✅ Pass correct product name
+                                        product?.image,        // ✅ Pass product image
+                                        product?.description   // ✅ Pass product description
+                                    )}
+                                >
+                                    Add to Cart
                                 </Button>
+
+
+
 
                                 <Card className="mb-3">
                                     <Card.Header>PROMOTIONS</Card.Header>
@@ -220,32 +289,71 @@ const Userproductdetails = () => {
                                         </a>
                                     </p>
                                 </div>
+                                {/* 
+                                <Form.Select className="mb-2 p-2" onChange={(e) => setSelectedState(e.target.value)}>
+                                    <option value="">Select State</option>
+                                    {states.map((s) => (
+                                        <option key={s.isoCode} value={s.isoCode}>
+                                            {s.name}
+                                        </option>
+                                    ))}
+                                </Form.Select> */}
 
-                                <div className="mb-3">
-                                    <h6>Choose your location</h6>
-                                    <Form.Select className="mb-2 p-2" onChange={(e) => setSelectedState(e.target.value)}>
-                                        <option value="">Select State</option>
-                                        {states.map((s) => (
-                                            <option key={s.isoCode} value={s.isoCode}>
-                                                {s.name}
-                                            </option>
-                                        ))}
-                                    </Form.Select>
+                                {/* <Form.Select className="mb-2 p-2" onChange={(e) => setSelectedState(e.target.value)}>
+                                    <option value="">Select State</option>
+                                    {states.map((s) => (
+                                        <option key={s.isoCode} value={s.name}> 
+                                            {s.name}
+                                        </option>
+                                    ))}
+                                </Form.Select> */}
 
-                                    {/* City Dropdown */}
-                                    <Form.Select
+
+                                {/* <Form.Select
                                     className="p-2"
-                                        onChange={(e) => setSelectedCity(e.target.value)}
-                                        disabled={!selectedState} // Disable until a state is selected
-                                    >
-                                        <option value="">Select City</option>
-                                        {City.getCitiesOfState("NG", selectedState).map((city) => (
-                                            <option key={city.name} value={city.name}>
-                                                {city.name}
-                                            </option>
-                                        ))}
-                                    </Form.Select>
-                                </div>
+                                    onChange={(e) => setSelectedCity(e.target.value)}
+                                    disabled={!selectedState} // Disable until a state is selected
+                                >
+                                    <option value="">Select City</option>
+                                    {City.getCitiesOfState("NG", selectedState).map((city) => (
+                                        <option key={city.name} value={city.name}>
+                                            {city.name}
+                                        </option>
+                                    ))}
+                                </Form.Select> */}
+                                <Form.Select
+                                    className="mb-2 p-2"
+                                    onChange={(e) => {
+                                        const selectedIso = e.target.value; // Get selected ISO code
+                                        const selectedStateName = states.find((s) => s.isoCode === selectedIso)?.name;
+
+                                        setSelectedStateIso(selectedIso); // Store ISO code for city selection
+                                        setSelectedState(selectedStateName); // Store full name for backend
+                                    }}
+                                >
+                                    <option value="">Select State</option>
+                                    {states.map((s) => (
+                                        <option key={s.isoCode} value={s.isoCode}>
+                                            {s.name}
+                                        </option>
+                                    ))}
+                                </Form.Select>
+
+
+                                <Form.Select
+                                    className="p-2"
+                                    onChange={(e) => setSelectedCity(e.target.value)}
+                                    disabled={!selectedStateIso} // Use ISO code here
+                                >
+                                    <option value="">Select City</option>
+                                    {City.getCitiesOfState("NG", selectedStateIso).map((city) => (
+                                        <option key={city.name} value={city.name}>
+                                            {city.name}
+                                        </option>
+                                    ))}
+                                </Form.Select>
+
+
 
                                 <div className="mb-3 border-bottom pb-3">
                                     <div className="d-flex">
@@ -285,16 +393,6 @@ const Userproductdetails = () => {
                                 </div>
                             </Card.Body>
                         </Card>
-                        {/* 
-                        <Card>
-                            <Card.Header className="d-flex justify-content-between align-items-center">
-                                <span>SELLER INFORMATION</span>
-                                <i className="bi bi-chevron-right"></i>
-                            </Card.Header>
-                            <Card.Body>
-                                <p>Zeemak Ltd - AC</p>
-                            </Card.Body>
-                        </Card> */}
                     </Col>
                 </Row>
             </Container>
