@@ -6,11 +6,19 @@ import { Star, StarFill, Facebook, Twitter, Clock, InfoCircle } from "react-boot
 import axios from "axios"
 import { useParams } from "react-router-dom"
 import Loader from "../Loader-page/Loader"
-import Logo from  '../../assets/Logofolder/logo.png'
+import Logo from '../../assets/Logofolder/logo.png'
+import { State, City } from "country-state-city";
 
 const Demo = () => {
     const [selectedLocation, setSelectedLocation] = useState("Oyo")
     const [selectedDelivery, setSelectedDelivery] = useState("Ogbomosho")
+
+    const [selectedState, setSelectedState] = useState("");
+    const [selectedCity, setSelectedCity] = useState("");
+
+    const states = State.getStatesOfCountry("NG");
+    // console.log(states.length,"see state here" );
+    
 
     // const [mainImage, setMainImage] = useState("/placeholder.svg?height=400&width=300")
     // const thumbnails = [
@@ -46,22 +54,22 @@ const Demo = () => {
 
     const initialTime = 18 * 3600 + 43 * 60 + 16; // Convert to seconds
     const [timeLeft, setTimeLeft] = useState(initialTime);
-  
+
     useEffect(() => {
-      if (timeLeft <= 0) return;
-  
-      const timer = setInterval(() => {
-        setTimeLeft((prevTime) => prevTime - 1);
-      }, 1000);
-  
-      return () => clearInterval(timer);
+        if (timeLeft <= 0) return;
+
+        const timer = setInterval(() => {
+            setTimeLeft((prevTime) => prevTime - 1);
+        }, 1000);
+
+        return () => clearInterval(timer);
     }, [timeLeft]);
-  
+
     const formatTime = (seconds) => {
-      const hours = Math.floor(seconds / 3600);
-      const minutes = Math.floor((seconds % 3600) / 60);
-      const secs = seconds % 60;
-      return `${hours}h : ${minutes}m : ${secs}s`;
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = seconds % 60;
+        return `${hours}h : ${minutes}m : ${secs}s`;
     };
 
 
@@ -73,7 +81,7 @@ const Demo = () => {
         );
     }
 
-   
+
 
     return (
         <div>
@@ -83,21 +91,6 @@ const Demo = () => {
                 <Row>
                     <Col lg={8}>
                         <Row>
-                            {/* <Col md={1} className="d-none d-md-block">
-                                <div className="d-flex flex-md-column gap-2 mb-3">
-                                    {thumbnails.map((thumb, index) => (
-                                        <div key={index} className="border p-1 cursor-pointer" onClick={() => setMainImage(thumb)}>
-                                            <img
-                                                src={thumb || "/placeholder.svg"}
-                                                alt={`Thumbnail ${index}`}
-                                                width={60}
-                                                height={60}
-                                                className="img-fluid"
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                            </Col> */}
                             <Col xs={12} md={5}>
                                 <div className="position-relative">
                                     <Badge bg="danger" className="position-absolute top-0 start-0 z-1 m-2">
@@ -114,19 +107,7 @@ const Demo = () => {
                                             />
                                         </Card.Body>
                                     </Card>
-                                    {/* <div className="d-flex d-md-none gap-2 mb-3 overflow-auto">
-                                        {thumbnails.map((thumb, index) => (
-                                            <div key={index} className="border p-1 cursor-pointer" onClick={() => setMainImage(thumb)}>
-                                                <img
-                                                    src={thumb || "/placeholder.svg"}
-                                                    alt={`Thumbnail ${index}`}
-                                                    width={60}
-                                                    height={60}
-                                                    className="img-fluid"
-                                                />
-                                            </div>
-                                        ))}
-                                    </div> */}
+                                
                                     <div className="mb-3">
                                         <h6>SHARE THIS PRODUCT</h6>
                                         <div className="d-flex gap-2">
@@ -192,7 +173,7 @@ const Demo = () => {
                                         ))}
                                         <Star className="text-warning" />
                                         <span className="ms-2">({product.likes?.length || 0} {product.likes?.length === 1 ? 'Like' : 'Likes'} ratings)</span>
-                                       
+
                                     </div>
                                 </div>
 
@@ -246,26 +227,34 @@ const Demo = () => {
 
                                 <div className="mb-3">
                                     <h6>Choose your location</h6>
-                                    <Form.Select
-                                        className="mb-2"
-                                        value={selectedLocation}
-                                        onChange={(e) => setSelectedLocation(e.target.value)}
-                                    >
-                                        <option>Oyo</option>
-                                        <option>Lagos</option>
-                                        <option>Abuja</option>
+                                    <Form.Select className="mb-2 p-2" onChange={(e) => setSelectedState(e.target.value)}>
+                                        <option value="">Select State</option>
+                                        {states.map((s) => (
+                                            <option key={s.isoCode} value={s.isoCode}>
+                                                {s.name}
+                                            </option>
+                                        ))}
                                     </Form.Select>
-                                    <Form.Select value={selectedDelivery} onChange={(e) => setSelectedDelivery(e.target.value)}>
-                                        <option>Ogbomosho</option>
-                                        <option>Ibadan</option>
-                                        <option>Oyo</option>
+
+                                    {/* City Dropdown */}
+                                    <Form.Select
+                                    className="p-2"
+                                        onChange={(e) => setSelectedCity(e.target.value)}
+                                        disabled={!selectedState} // Disable until a state is selected
+                                    >
+                                        <option value="">Select City</option>
+                                        {City.getCitiesOfState("NG", selectedState).map((city) => (
+                                            <option key={city.name} value={city.name}>
+                                                {city.name}
+                                            </option>
+                                        ))}
                                     </Form.Select>
                                 </div>
 
                                 <div className="mb-3 border-bottom pb-3">
                                     <div className="d-flex">
                                         <div className="me-3">
-                                        <i class="ri-team-line fs-4 fw-bold"></i>
+                                            <i class="ri-team-line fs-4 fw-bold"></i>
                                         </div>
                                         <div>
                                             <h6>
@@ -285,7 +274,7 @@ const Demo = () => {
                                 <div className="mb-3">
                                     <div className="d-flex">
                                         <div className="me-3">
-                                        <i class="ri-verified-badge-line fs-4 fw-bold"></i>
+                                            <i class="ri-verified-badge-line fs-4 fw-bold"></i>
                                         </div>
                                         <div>
                                             <h6>Return Policy</h6>
@@ -300,7 +289,7 @@ const Demo = () => {
                                 </div>
                             </Card.Body>
                         </Card>
-{/* 
+                        {/* 
                         <Card>
                             <Card.Header className="d-flex justify-content-between align-items-center">
                                 <span>SELLER INFORMATION</span>
