@@ -136,7 +136,7 @@ const Userproduct = () => {
                         <h6 className="text-primary fw-bold">
                           Price: ₦{product.price.toLocaleString()}
                         </h6>
-                        <button className="btn btn-primary w-100" onClick={() => navigate(`/demo/${product._id}`)}>View Product</button>
+                        <button className="btn btn-primary w-100" onClick={() => navigate(`/userdetails/${product._id}`)}>View Product</button>
                       </div>
                     </div>
                   </div>

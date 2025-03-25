@@ -16,6 +16,9 @@ const AdminNavbar = () => {
     const NavigatetoViewUpload=()=>{
         navigate("/adviewupload")
     }
+    const VeiwAddtoCart =()=>{
+        navigate("/veiwaddtocart")
+    }
     return (
         <div>
             <nav class="navbar navbar-expand-lg fixed-top" style={{ backgroundColor: "#23527c" }}>
@@ -31,7 +34,10 @@ const AdminNavbar = () => {
                                     <a class="nav-link active text-white" aria-current="page" >Home</a>
                                 </li>
                                 <li class="nav-item" style={{ cursor: "pointer" }}>
-                                    <a class="nav-link active text-white" aria-current="page" >History</a>
+                                    <a class="nav-link active text-white" aria-current="page">History</a>
+                                </li>
+                                <li class="nav-item" style={{ cursor: "pointer" }} >
+                                    <a class="nav-link active text-white" aria-current="page" onClick={VeiwAddtoCart}>View</a>
                                 </li>
                                 <li class="nav-item dropdown" style={{ cursor: "pointer" }}>
                                     <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">

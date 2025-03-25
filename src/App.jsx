@@ -14,7 +14,7 @@ import Adminprotected from './components/Admin-folder/AdminProtectedpage/Adminpr
 import Adminviewupload from './components/Admin-folder/Adminviewuploadpage/Adminviewupload'
 import Adminalluserslike from './components/Admin-folder/AdminAllUsersLiked/Adminalluserslike'
 import Userproductdetails from './components/Userproductdetailspage/Userproductdetails'
-import Demo from './components/Userproductdetailspage/Demo'
+import VeiwAddtocart from './components/Admin-folder/AdminVeiwAddtocart/VeiwAddtocart'
 
 
 function App() {
@@ -34,11 +34,10 @@ function App() {
           <Route path='/adupload' element={<Adminupload />} />
           <Route path='/adviewupload' element={<Adminviewupload/>}/>
           <Route path='/adlikedusers' element={<Adminalluserslike/>}/>
+          <Route path='/veiwaddtocart' element={<VeiwAddtocart/>}/>
         </Route>
-
         <Route path='/userproduct' element={<Userproduct />} />
         <Route path='/userdetails/:id' element={<Userproductdetails/>}/>
-        <Route path='/demo/:id' element={<Demo/>}/>
         <Route path='*' element={<Notfound />} />
       </Routes>
     </>
