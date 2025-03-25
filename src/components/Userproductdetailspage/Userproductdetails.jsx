@@ -10,9 +10,6 @@ import Logo from '../../assets/Logofolder/logo.png'
 import { State, City } from "country-state-city";
 
 const Userproductdetails = () => {
-    const [selectedLocation, setSelectedLocation] = useState("Oyo")
-    const [selectedDelivery, setSelectedDelivery] = useState("Ogbomosho")
-
     const [selectedState, setSelectedState] = useState("");
     const [selectedCity, setSelectedCity] = useState("");
 
