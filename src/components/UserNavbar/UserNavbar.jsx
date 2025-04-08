@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import Logo from '../../assets/Logofolder/logo.png'
 const UserNavbar = () => {
     let navigate = useNavigate()
     const LogoutBTN = () => {
@@ -22,7 +22,7 @@ const UserNavbar = () => {
         
         <nav class="navbar navbar-expand-lg fixed-top " style={{backgroundColor:"#23527c"}}>
                 <div class="container-fluid">
-                    <a class="navbar-brand text-white" href="#">Navbar</a>
+                    <img src={Logo} class="navbar-brand text-white" style={{width:"45px"}} alt="" />
                     <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
