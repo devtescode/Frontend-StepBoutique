@@ -61,21 +61,6 @@ const Userproductdetails = () => {
             }
     
             const cartItem = { userId, productId, quantity, state, city, productName, image, description };
-            // console.log("Sending to backend:", cartItem);
-
-
-            // console.log("🛒 Sending Data to Backend:", { 
-            //     userId, 
-            //     productId, 
-            //     quantity, 
-            //     state, 
-            //     city, 
-            //     productName, 
-            //     image, 
-            //     description 
-            // });
-            
-    
             const response = await fetch("http://localhost:4500/usercallerfetch/useraddtocart", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -86,18 +71,13 @@ const Userproductdetails = () => {
                 throw new Error("Failed to add item to cart");
             }
     
-            const data = await response.json();
-            console.log("Response from backend:", data);
+            // const data = await response.json();
+            // console.log("Response from backend:", data);
         } catch (error) {
             console.error("Error adding to cart:", error);
             alert("An error occurred while adding the item to the cart. Please try again.");
         }
     };
-    
-
-    // const addToCart = () => {
-    //     console.log(`Added ${product.productName} to cart!`);
-    // };
 
     const initialTime = 18 * 3600 + 43 * 60 + 16; // Convert to seconds
     const [timeLeft, setTimeLeft] = useState(initialTime);
