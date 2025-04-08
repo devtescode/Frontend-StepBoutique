@@ -10,19 +10,23 @@ const UserNavbar = () => {
         localStorage.removeItem("userDatas")
     }
 
-    const ProductBtn=()=>{
+    const ProductBtn = () => {
         navigate("/userproduct")
     }
 
-    const HomeBtn=()=>{
+    const HomeBtn = () => {
         navigate("/db")
     }
-  return (
-    <div>
-        
-        <nav class="navbar navbar-expand-lg fixed-top " style={{backgroundColor:"#23527c"}}>
+
+    const ViewAddtochat = ()=>{
+        navigate("/userviewaddtochat")
+    }
+    return (
+        <div>
+
+            <nav class="navbar navbar-expand-lg fixed-top " style={{ backgroundColor: "#23527c" }}>
                 <div class="container-fluid">
-                    <img src={Logo} class="navbar-brand text-white" style={{width:"45px"}} alt="" />
+                    <img src={Logo} class="navbar-brand text-white" style={{ width: "45px" }} alt="" />
                     <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -48,10 +52,10 @@ const UserNavbar = () => {
                                 <li class="nav-item" style={{ cursor: "pointer" }}>
                                     <a class="nav-link disabled text-white" aria-disabled="true">Profile</a>
                                 </li>
-                                <li class="nav-item" style={{ cursor: "pointer" }} onClick={ProductBtn}> 
+                                <li class="nav-item" style={{ cursor: "pointer" }} onClick={ProductBtn}>
                                     <a class="nav-link disabled text-white" aria-disabled="true">Product</a>
                                 </li>
-                                <li class="nav-item" style={{ cursor: "pointer" }}>
+                                <li class="nav-item" style={{ cursor: "pointer" }} onClick={ViewAddtochat}>
                                     <a class="nav-link disabled text-white" aria-disabled="true">Add Chat</a>
                                 </li>
                                 <li class="nav-item" style={{ cursor: "pointer" }} onClick={LogoutBTN}>
@@ -69,8 +73,8 @@ const UserNavbar = () => {
                 </div>
             </nav>
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default UserNavbar
