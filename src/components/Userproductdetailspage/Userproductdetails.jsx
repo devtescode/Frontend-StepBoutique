@@ -38,6 +38,47 @@ const Userproductdetails = () => {
     }, [id]);
 
 
+    // const addToCart = async (productId, quantity, state, city, productName, image, description) => {
+    //     try {
+    //         const storedUser = localStorage.getItem("userDatas");
+    
+    //         if (!state || !city) {
+    //             alert("Please select a state and city before adding to cart.");
+    //             return;
+    //         }
+    
+    //         if (!storedUser) {
+    //             console.error("User not found in localStorage");
+    //             return;
+    //         }
+    
+    //         const { userId } = JSON.parse(storedUser);
+    
+    //         if (!productName || !image || !description) {
+    //             console.error("Product details are missing:", { productName, image, description });
+    //             alert("Product details are incomplete. Please try again.");
+    //             return;
+    //         }
+    
+    //         const cartItem = { userId, productId, quantity, state, city, productName, image, description };
+    //         const response = await fetch("http://localhost:4500/usercallerfetch/useraddtocart", {
+    //             method: "POST",
+    //             headers: { "Content-Type": "application/json" },
+    //             body: JSON.stringify(cartItem),
+    //         });
+    
+    //         if (!response.ok) {
+    //             throw new Error("Failed to add item to cart");
+    //         }
+    
+    //         // const data = await response.json();
+    //         // console.log("Response from backend:", data);
+    //     } catch (error) {
+    //         console.error("Error adding to cart:", error);
+    //         alert("An error occurred while adding the item to the cart. Please try again.");
+    //     }
+    // };
+
     const addToCart = async (productId, quantity, state, city, productName, image, description) => {
         try {
             const storedUser = localStorage.getItem("userDatas");
@@ -61,6 +102,7 @@ const Userproductdetails = () => {
             }
     
             const cartItem = { userId, productId, quantity, state, city, productName, image, description };
+    
             const response = await fetch("http://localhost:4500/usercallerfetch/useraddtocart", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -71,14 +113,15 @@ const Userproductdetails = () => {
                 throw new Error("Failed to add item to cart");
             }
     
-            // const data = await response.json();
-            // console.log("Response from backend:", data);
+            // ✅ Show success message (replace alert with SweetAlert if you want)
+            alert("Item added to cart successfully!");
+    
         } catch (error) {
             console.error("Error adding to cart:", error);
-            alert("An error occurred while adding the item to the cart. Please try again.");
+            alert("An error occurred while adding the item to the cart.");
         }
     };
-
+    
     const initialTime = 18 * 3600 + 43 * 60 + 16; // Convert to seconds
     const [timeLeft, setTimeLeft] = useState(initialTime);
 
