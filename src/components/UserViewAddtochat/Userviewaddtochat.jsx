@@ -48,6 +48,7 @@ const Userviewaddtochat = () => {
                             {cartItems.length > 0 ? (
                                 cartItems.map((item, index) => (
                                     <div key={index} className="bg-white p-4 rounded-xl shadow text-black">
+                                        <hr />
                                         <img style={{ width: "100px" }} src={item.image} alt={item.productName} className="mb-2 rounded" />
                                         <h4>Name: {item.productName}</h4>
                                         <p>Description: {item.description}</p>
@@ -56,7 +57,7 @@ const Userviewaddtochat = () => {
                                     </div>
                                 ))
                             ) : (
-                                <p>No items in your cart</p>
+                                <p className='fw-bold fs-5'>No product added yet</p>
                             )}
                         </div>
                     )}
