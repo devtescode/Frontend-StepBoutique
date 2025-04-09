@@ -84,7 +84,6 @@ const Userproductdetails = () => {
             const storedUser = localStorage.getItem("userDatas");
     
             if (!state || !city) {
-                // alert("");
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
