@@ -84,7 +84,12 @@ const Userproductdetails = () => {
             const storedUser = localStorage.getItem("userDatas");
     
             if (!state || !city) {
-                alert("Please select a state and city before adding to cart.");
+                // alert("");
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Please select a state and city before adding to cart.",
+                  });
                 return;
             }
     
@@ -114,7 +119,13 @@ const Userproductdetails = () => {
             }
     
             // ✅ Show success message (replace alert with SweetAlert if you want)
-            alert("Item added to cart successfully!");
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Item added to cart successfully!",
+                showConfirmButton: false,
+                timer: 1500
+              });
     
         } catch (error) {
             console.error("Error adding to cart:", error);
