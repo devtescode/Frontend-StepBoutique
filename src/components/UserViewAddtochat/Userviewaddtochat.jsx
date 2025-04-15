@@ -39,8 +39,8 @@ const Userviewaddtochat = () => {
         <>
             <Navbar />
             <UserNavbar />
-            <div style={{ width: "95%", marginTop: "80px", margin:"auto" }}>
-                <div className='text-white' style={{marginTop:"70px"}}>
+            {/* <div className='mx-2'>
+                <div className='text-white row align-items-start' style={{ marginTop: "70px" }}>
                     {loading ? (
                         <p>Loading...</p>
                     ) : (
@@ -62,7 +62,74 @@ const Userviewaddtochat = () => {
                         </div>
                     )}
                 </div>
+                <div className='border'>
+                    <h3>CART SUMMARY</h3>
+                    <p>Subtotal</p>
+
+                </div>
+            </div> */}
+
+
+
+            <div className="container" style={{ marginTop: "90px" }}>
+                <div className="row">
+                    {/* Cart Items Section */}
+                    <div className="col-12 col-md-9 mb-4 border bg-white rounded">
+                        {loading ? (
+                            <p>Loading...</p>
+                        ) : (
+                            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                                {cartItems.length > 0 ? (
+                                    cartItems.map((item, index) => (
+                                        <div key={index} className="col">
+                                            <div className="bg-white p-3 rounded  align-items-center align-items-md-center gap-3 ">
+                                                {/* Image Section */}
+                                                <div className='justify-content-center text-center'>
+                                                    <img
+                                                        src={item.image}
+                                                        alt={item.productName}
+                                                        style={{ width: "100px", height: "100px", objectFit: "cover" }}
+                                                        className="rounded"
+                                                    />
+                                                </div>
+
+                                                {/* Details Section */}
+                                                <div className="flex-grow-1">
+                                                    <h5 className="fw-bold">Name: {item.productName}</h5>
+                                                    <p className="mb-1">Description: {item.description}</p>
+                                                    <p className="mb-1">Price: ₦{item.price}</p>
+                                                    <p className="mb-0">
+                                                        Location: State - {item.state}, City - {item.city}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    ))
+                                ) : (
+                                    <p className="fw-bold fs-5 text-black">No product added yet</p>
+                                )}
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Cart Summary Section */}
+                    <div className="col-12 col-md-3">
+                        <div className="border bg-white p-3 rounded shadow">
+                            <h3 className="fs-5 fw-bold mb-3">CART SUMMARY</h3>
+                            <hr />
+                            <p>Total Items: {cartItems.length}</p>
+                            <p>
+                                Subtotal: ₦
+                                {cartItems.reduce((total, item) => total + Number(item.price), 0)}
+                            </p>
+                            {/* Add more details like delivery, tax, or checkout button here if needed */}
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </>
     );
 };
