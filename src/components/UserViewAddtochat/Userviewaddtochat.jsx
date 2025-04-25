@@ -74,38 +74,44 @@ const Userviewaddtochat = () => {
             <div className="container" style={{ marginTop: "90px" }}>
                 <div className="row">
                     {/* Cart Items Section */}
-                    <div className="col-12 col-md-9 mb-4 border bg-white rounded">
+                    <div className="col-12 col-md-9 mb-4  bg-white rounded">
                         {loading ? (
                             <p>Loading...</p>
                         ) : (
-                            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                            <div className="">
                                 {cartItems.length > 0 ? (
                                     cartItems.map((item, index) => (
-                                        <div key={index} className="col">
-                                            <div className="bg-white p-3 rounded  align-items-center align-items-md-center gap-3 ">
-                                                {/* Image Section */}
-                                                <div className='justify-content-center text-center'>
+                                        <div key={index} className="d-flex flex-column justify-content-between rounded p-3 my-2" style={{ minHeight: "100%" }}>
+                                            {/* Content Section */}
+                                            <div>
+                                                <div className="justify-content-center text-center mb-3">
                                                     <img
                                                         src={item.image}
                                                         alt={item.productName}
-                                                        style={{ width: "100px", height: "100px", objectFit: "cover" }}
+                                                        style={{ width: "200px", height: "100px", objectFit: "cover" }}
                                                         className="rounded"
                                                     />
                                                 </div>
-
-                                                {/* Details Section */}
                                                 <div className="flex-grow-1">
                                                     <h5 className="fw-bold">Name: {item.productName}</h5>
                                                     <p className="mb-1">Description: {item.description}</p>
-                                                    <p className="mb-1">Price: ₦{item.price}</p>
+                                                    <p class Name="mb-1">Price: ₦{item.price}</p>
                                                     <p className="mb-0">
                                                         Location: State - {item.state}, City - {item.city}
                                                     </p>
                                                 </div>
                                             </div>
+
+                                            {/* Delete Button at Bottom */}
+                                            <div className="text-end mt-3">
+                                                <button
+                                                    className="btn btn-danger btn-sm"
+                                                    onClick={() => handleDeleteItem(index)}
+                                                >
+                                                    Remove
+                                                </button>
+                                            </div>
                                         </div>
-
-
                                     ))
                                 ) : (
                                     <p className="fw-bold fs-5 text-black">No product added yet</p>
@@ -113,6 +119,7 @@ const Userviewaddtochat = () => {
                             </div>
                         )}
                     </div>
+
 
                     {/* Cart Summary Section */}
                     <div className="col-12 col-md-3">
